@@ -3,12 +3,12 @@ import { Filter, RoomFloor, RoomCount, ContractType } from '../filter';
 /**
  * 월세 한도 (단위 만원)
  */
-const rentBudget = 70;
+const rentBudget = 1000;
 
 /**
  * 보증금 한도 (단위 만원)
  */
-const depositBudget = 5000;
+const depositBudget = 10000;
 
 const commonFilter: Omit<Filter, 'bounds' | 'id'> = {
     priceRange: {
