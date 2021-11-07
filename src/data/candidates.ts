@@ -25,21 +25,28 @@ const commonFilter: Omit<Filter, 'bounds' | 'id'> = {
     shouldIncludeRooftops: true,
 };
 
+// https://api.peterpanz.com/houses/area?filter=latitude:37.4802682~37.4895139%7C%7Clongitude:127.0092198~127.0323082%7C%7CcheckDeposit:120000000~200000000&zoomLevel=16&center=%7B%22y%22:37.4848912,%22_lat%22:37.4848912,%22x%22:127.020764,%22_lng%22:127.020764%7D&dong=%EC%84%9C%EC%B4%881%EB%8F%99&gungu=%EC%84%9C%EC%B4%88%EA%B5%AC&pageSize=90&pageIndex=2
+
 const candidates: Filter[] = [
+    {
+        id: '서초동',
+        ...commonFilter,
+        priceRange: {
+            rent: { max: 30000 },
+            deposit: { max: depositBudget * 10000 },
+            shouldIncludeMaintenance: true,
+        },
+        bounds: {
+            max: { lat: 37.4802682, lng: 127.0092198 },
+            min: { lat: 37.4895139, lng: 127.0323082 },
+        },
+    },
     {
         id: '뚝섬 서울숲',
         ...commonFilter,
         bounds: {
             max: { lat: 37.5558485, lng: 127.060802 },
             min: { lat: 37.5317832, lng: 127.0328288 },
-        },
-    },
-    {
-        id: '양재',
-        ...commonFilter,
-        bounds: {
-            max: { lat: 37.4854867, lng: 127.0506948 },
-            min: { lat: 37.4667919, lng: 127.0319895 },
         },
     },
     {
